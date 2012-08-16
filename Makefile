@@ -1,7 +1,7 @@
 # See the README for installation instructions.
 
 NODE_PATH ?= ./node_modules
-JS_COMPILER = $(NODE_PATH)/uglify-js/bin/uglifyjs
+JS_COMPILER = /bin/cat
 JS_BEAUTIFIER = $(NODE_PATH)/uglify-js/bin/uglifyjs -b -i 2 -nm -ns
 JS_TESTER = $(NODE_PATH)/vows/bin/vows
 LOCALE ?= en_US
@@ -234,7 +234,7 @@ test: all
 
 d3%.js: Makefile
 	@rm -f $@
-	cat $(filter %.js,$^) | $(JS_BEAUTIFIER) > $@
+	cat $(filter %.js,$^) > $@
 	@chmod a-w $@
 
 package.json: src/package.js
